@@ -19,24 +19,19 @@ import java.util.ArrayList;
 public class MyAdapter extends BaseAdapter {
 
     Context context;
-//    String data[];
-//    String data2[];
     ArrayList<String>data;
 
-//    public MyAdapter(Context c, String[] d, String d2[]){
     public boolean chks[];
     public MyAdapter(Context c, ArrayList<String>d){
         context=c;
         data=d;
         chks =new boolean[d.size()];
-//        data2=d2;
     }
 
 
 
     @Override
     public int getCount() {
-//        return data.length;
         return data.size();
     }
 

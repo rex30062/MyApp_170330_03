@@ -2,19 +2,21 @@ package com.cclz.myapp_170330_03;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-//    String data[]={"蘋果", "檸檬", "香蕉", "橘子"};
-//    String data2[]={"Apple", "Lemon", "Banana", "Orange"};
     ArrayList<String> data=new ArrayList<>();
+    MyAdapter adapter;
     ListView lv;
 
     @Override
@@ -22,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         lv=(ListView)findViewById(R.id.listView);
-//        MyAdapter adapter=new MyAdapter(MainActivity.this, data, data2);
         data.add("AA1");
         data.add("AA2");
         data.add("AA3");
@@ -36,10 +37,28 @@ public class MainActivity extends AppCompatActivity {
         data.add("AA11");
         data.add("AA12");
 
-        MyAdapter adapter = new MyAdapter(MainActivity.this, data);
+        adapter = new MyAdapter(MainActivity.this, data);
         lv.setAdapter(adapter);
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("Show");
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getTitle().equals("Show")){
+            StringBuilder sb=new StringBuilder();
+            for(int i=0; i<adapter.chks.length; i++){
+                if(adapter.chks[i]){
+                    sb.append(data.get(i) + ",");
+                }
+            }
+            Toast.makeText(MainActivity.this, sb.toString(), Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
