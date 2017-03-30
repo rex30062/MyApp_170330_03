@@ -42,9 +42,12 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            TextView tv=new TextView(MainActivity.this);
+            View v=getLayoutInflater().inflate(R.layout.myitem, null);  // 自訂Layout
+//            TextView tv=new TextView(MainActivity.this);
+            TextView tv=(TextView)v.findViewById(R.id.textView);    // 自訂 tv 大型字體
             tv.setText(data[position]);
-            return tv;
+//            return tv;
+            return v;
         }
     }
 }
