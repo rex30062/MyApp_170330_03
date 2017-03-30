@@ -12,6 +12,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     String data[]={"蘋果", "檸檬", "香蕉", "橘子"};
+    String data2[]={"Apple", "Lemon", "Banana", "Orange"};
     ListView lv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
             View v=getLayoutInflater().inflate(R.layout.myitem, null);  // 自訂Layout
 //            TextView tv=new TextView(MainActivity.this);
             TextView tv=(TextView)v.findViewById(R.id.textView);    // 自訂 tv 大型字體
+            TextView tv2=(TextView)v.findViewById(R.id.textView2);    // 自訂 tv 大型字體
             tv.setText(data[position]);
+            tv2.setText(data2[position]);
 //            return tv;
             return v;
         }
