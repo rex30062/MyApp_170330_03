@@ -48,6 +48,7 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         Log.d("MyView", "p:" + position);
+        Log.d("MyView", "CHKS, 0:" + chks[0]);
         ViewHolder holder=new ViewHolder();
         if (convertView == null){
             convertView=((Activity)context).getLayoutInflater().inflate(R.layout.myitem, null);  // 自訂Layout
@@ -60,6 +61,7 @@ public class MyAdapter extends BaseAdapter {
             holder=(ViewHolder)convertView.getTag();
         }
 
+        holder.chk.setOnCheckedChangeListener(null);
         holder.chk.setChecked(chks[position]);
         holder.chk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
